@@ -1,0 +1,171 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Fractals/2_bw.jpg" type="Texture" id=1]
+[ext_resource path="res://Fractals/2.jpg" type="Texture" id=2]
+[ext_resource path="res://Fractals/main_scene.gd" type="Script" id=3]
+[ext_resource path="res://Fractals/4.jpg" type="Texture" id=4]
+[ext_resource path="res://Fractals/3.jpg" type="Texture" id=5]
+[ext_resource path="res://Fractals/5.jpg" type="Texture" id=6]
+[ext_resource path="res://Fractals/6.jpg" type="Texture" id=7]
+[ext_resource path="res://ButtonGroup.tres" type="ButtonGroup" id=8]
+[ext_resource path="res://Fractals/1_bw.jpg" type="Texture" id=9]
+[ext_resource path="res://Fractals/4_bw.jpg" type="Texture" id=10]
+[ext_resource path="res://Fractals/5_bw.jpg" type="Texture" id=11]
+[ext_resource path="res://Fractals/6_bw.jpg" type="Texture" id=12]
+[ext_resource path="res://Fractals/3_bw.jpg" type="Texture" id=13]
+[ext_resource path="res://Fractals/1.jpg" type="Texture" id=14]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 129, 80 )
+scale = Vector2( 0.150887, 0.151428 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 0.0, 200.0, 400.0 ],
+"_edit_vertical_guides_": [ 512.0, 0.0, 0.0 ]
+}
+group = ExtResource( 8 )
+
+[node name="Fractal1" type="Button" parent="."]
+margin_left = -722.0
+margin_top = -304.0
+margin_right = 1332.0
+margin_bottom = 944.0
+group = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="AnimatedSprite" parent="Fractal1"]
+position = Vector2( 1026.86, 627.586 )
+frames = SubResource( 2 )
+
+[node name="Fractal2" type="Button" parent="."]
+margin_left = 1583.97
+margin_top = -303.775
+margin_right = 3625.97
+margin_bottom = 951.225
+group = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="AnimatedSprite" parent="Fractal2"]
+position = Vector2( 1033.89, 633.964 )
+frames = SubResource( 1 )
+
+[node name="Fractal3" type="Button" parent="."]
+margin_left = 3790.92
+margin_top = -297.171
+margin_right = 5831.92
+margin_bottom = 944.829
+group = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="AnimatedSprite" parent="Fractal3"]
+position = Vector2( 1027.26, 620.757 )
+frames = SubResource( 3 )
+
+[node name="Fractal4" type="Button" parent="."]
+margin_left = -676.003
+margin_top = 1578.31
+margin_right = 1379.0
+margin_bottom = 2826.31
+group = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="AnimatedSprite" parent="Fractal4"]
+position = Vector2( 1027.26, 627.36 )
+frames = SubResource( 4 )
+
+[node name="Fractal5" type="Button" parent="."]
+margin_left = 1564.08
+margin_top = 1551.89
+margin_right = 3611.08
+margin_bottom = 2806.89
+group = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="AnimatedSprite" parent="Fractal5"]
+position = Vector2( 1026.78, 621.235 )
+frames = SubResource( 5 )
+
+[node name="Fractal6" type="Button" parent="."]
+margin_left = 3784.29
+margin_top = 1578.31
+margin_right = 5779.29
+margin_bottom = 2793.31
+group = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="AnimatedSprite" parent="Fractal6"]
+position = Vector2( 1000.84, 607.819 )
+frames = SubResource( 6 )
+
+[connection signal="mouse_entered" from="Fractal1" to="." method="_on_Fractal1_mouse_entered"]
+[connection signal="mouse_exited" from="Fractal1" to="." method="_on_Fractal1_mouse_exited"]
+[connection signal="mouse_entered" from="Fractal2" to="." method="_on_Fractal2_mouse_entered"]
+[connection signal="mouse_exited" from="Fractal2" to="." method="_on_Fractal2_mouse_exited"]
+[connection signal="mouse_entered" from="Fractal3" to="." method="_on_Fractal3_mouse_entered"]
+[connection signal="mouse_exited" from="Fractal3" to="." method="_on_Fractal3_mouse_exited"]
+[connection signal="mouse_entered" from="Fractal4" to="." method="_on_Fractal4_mouse_entered"]
+[connection signal="mouse_exited" from="Fractal4" to="." method="_on_Fractal4_mouse_exited"]
+[connection signal="mouse_entered" from="Fractal5" to="." method="_on_Fractal5_mouse_entered"]
+[connection signal="mouse_exited" from="Fractal5" to="." method="_on_Fractal5_mouse_exited"]
+[connection signal="mouse_entered" from="Fractal6" to="." method="_on_Fractal6_mouse_entered"]
+[connection signal="mouse_exited" from="Fractal6" to="." method="_on_Fractal6_mouse_exited"]
