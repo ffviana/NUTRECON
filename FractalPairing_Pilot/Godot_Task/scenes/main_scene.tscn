@@ -1,0 +1,372 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Fractals/2.jpg" type="Texture" id=1]
+[ext_resource path="res://Fractals/4.jpg" type="Texture" id=2]
+[ext_resource path="res://Fractals/2_bw.jpg" type="Texture" id=3]
+[ext_resource path="res://Fractals/1_bw.jpg" type="Texture" id=4]
+[ext_resource path="res://Fractals/5.jpg" type="Texture" id=5]
+[ext_resource path="res://Fractals/6.jpg" type="Texture" id=6]
+[ext_resource path="res://Fractals/3_bw.jpg" type="Texture" id=7]
+[ext_resource path="res://Fractals/1.jpg" type="Texture" id=8]
+[ext_resource path="res://Fractals/6_bw.jpg" type="Texture" id=9]
+[ext_resource path="res://Fractals/5_bw.jpg" type="Texture" id=10]
+[ext_resource path="res://Fractals/3.jpg" type="Texture" id=11]
+[ext_resource path="res://scripts/FractalStates.gd" type="Script" id=12]
+[ext_resource path="res://scripts/main_scene.gd" type="Script" id=13]
+[ext_resource path="res://Fonts/TREBUC.TTF" type="DynamicFontData" id=14]
+[ext_resource path="res://Fonts/TREBUCBD.TTF" type="DynamicFontData" id=15]
+[ext_resource path="res://Fractals/4_bw.jpg" type="Texture" id=16]
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0.743169 )
+colors = PoolColorArray( 0, 0, 0, 0.482353 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="ButtonGroup" id=10]
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=9]
+size = 114
+extra_spacing_top = 36
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 114
+font_data = ExtResource( 15 )
+
+[sub_resource type="Gradient" id=15]
+offsets = PoolRealArray( 0.641026 )
+colors = PoolColorArray( 0.0588235, 0.0588235, 0.0588235, 1 )
+
+[sub_resource type="GradientTexture" id=16]
+gradient = SubResource( 15 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 115
+font_data = ExtResource( 15 )
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.0588235, 0.0588235, 0.0588235, 1 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 115
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 115
+font_data = ExtResource( 14 )
+
+[node name="FractalChoiceScreen" type="Node2D"]
+position = Vector2( 121, 141 )
+scale = Vector2( 0.15921, 0.159781 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 32.0, 64.0, 299.0 ],
+"_edit_vertical_guides_": [ 264.0, 760.0, 512.0 ]
+}
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 2455.88, 995.112 )
+scale = Vector2( 3.18958, 3855.28 )
+texture = SubResource( 8 )
+
+[node name="Fractals" type="GridContainer" parent="."]
+margin_left = -710.0
+margin_top = -282.0
+margin_right = 5610.0
+margin_bottom = 2308.0
+size_flags_stretch_ratio = 0.0
+custom_constants/vseparation = 70
+custom_constants/hseparation = 70
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fractal1" type="Button" parent="Fractals"]
+margin_right = 2060.0
+margin_bottom = 1260.0
+rect_min_size = Vector2( 2060, 1260 )
+mouse_default_cursor_shape = 2
+size_flags_stretch_ratio = 0.0
+toggle_mode = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="AnimatedSprite" parent="Fractals/Fractal1"]
+scale = Vector2( 1.01, 1.01 )
+frames = SubResource( 11 )
+centered = false
+script = ExtResource( 12 )
+
+[node name="Fractal2" type="Button" parent="Fractals"]
+margin_left = 2130.0
+margin_right = 4190.0
+margin_bottom = 1260.0
+rect_min_size = Vector2( 2060, 1260 )
+mouse_default_cursor_shape = 2
+size_flags_stretch_ratio = 0.0
+toggle_mode = true
+action_mode = 0
+group = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="AnimatedSprite" parent="Fractals/Fractal2"]
+scale = Vector2( 1.01, 1.01 )
+frames = SubResource( 12 )
+centered = false
+script = ExtResource( 12 )
+
+[node name="Fractal3" type="Button" parent="Fractals"]
+margin_left = 4260.0
+margin_right = 6320.0
+margin_bottom = 1260.0
+rect_min_size = Vector2( 2060, 1260 )
+mouse_default_cursor_shape = 2
+size_flags_stretch_ratio = 0.0
+toggle_mode = true
+action_mode = 0
+group = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="AnimatedSprite" parent="Fractals/Fractal3"]
+scale = Vector2( 1.01, 1.01 )
+frames = SubResource( 13 )
+centered = false
+script = ExtResource( 12 )
+
+[node name="Fractal4" type="Button" parent="Fractals"]
+margin_top = 1330.0
+margin_right = 2060.0
+margin_bottom = 2590.0
+rect_min_size = Vector2( 2060, 1260 )
+mouse_default_cursor_shape = 2
+size_flags_stretch_ratio = 0.0
+toggle_mode = true
+action_mode = 0
+group = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="AnimatedSprite" parent="Fractals/Fractal4"]
+scale = Vector2( 1.01, 1.01 )
+frames = SubResource( 4 )
+centered = false
+script = ExtResource( 12 )
+
+[node name="Fractal5" type="Button" parent="Fractals"]
+margin_left = 2130.0
+margin_top = 1330.0
+margin_right = 4190.0
+margin_bottom = 2590.0
+rect_min_size = Vector2( 2060, 1260 )
+mouse_default_cursor_shape = 2
+size_flags_stretch_ratio = 0.0
+toggle_mode = true
+action_mode = 0
+group = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="AnimatedSprite" parent="Fractals/Fractal5"]
+scale = Vector2( 1.01, 1.01 )
+frames = SubResource( 5 )
+centered = false
+script = ExtResource( 12 )
+
+[node name="Fractal6" type="Button" parent="Fractals"]
+margin_left = 4260.0
+margin_top = 1330.0
+margin_right = 6320.0
+margin_bottom = 2590.0
+rect_min_size = Vector2( 2060, 1260 )
+mouse_default_cursor_shape = 2
+size_flags_stretch_ratio = 0.0
+toggle_mode = true
+action_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="state" type="AnimatedSprite" parent="Fractals/Fractal6"]
+scale = Vector2( 1.01, 1.01 )
+frames = SubResource( 6 )
+centered = false
+script = ExtResource( 12 )
+
+[node name="TEXT1" type="RichTextLabel" parent="."]
+margin_left = 973.557
+margin_top = -682.184
+margin_right = 3938.56
+margin_bottom = -482.184
+custom_fonts/normal_font = SubResource( 9 )
+text = "Clique na imagem que corresponde ao iogurte que provou"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmationQuestion" type="Node2D" parent="."]
+visible = false
+
+[node name="TEXT2" type="RichTextLabel" parent="ConfirmationQuestion"]
+margin_left = 948.433
+margin_top = -682.184
+margin_right = 3963.43
+margin_bottom = -482.184
+custom_fonts/normal_font = SubResource( 9 )
+text = "Selecionou a imagem colorida. Quer prosseguir?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Yes" type="Button" parent="ConfirmationQuestion"]
+margin_left = 3435.71
+margin_top = -682.184
+margin_right = 3661.71
+margin_bottom = -482.184
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 14 )
+text = "Sim"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="No" type="Button" parent="ConfirmationQuestion"]
+margin_left = 3737.84
+margin_top = -682.184
+margin_right = 3963.84
+margin_bottom = -482.184
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 14 )
+text = "Não"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ITI" type="Node2D" parent="."]
+visible = false
+
+[node name="Background" type="Sprite" parent="ITI"]
+position = Vector2( 2455.88, 995.112 )
+scale = Vector2( 3.18958, 3855.28 )
+texture = SubResource( 16 )
+
+[node name="fixationButton" type="Button" parent="ITI"]
+margin_left = 2381.13
+margin_top = 910.741
+margin_right = 2531.13
+margin_bottom = 1063.74
+mouse_default_cursor_shape = 2
+custom_fonts/font = SubResource( 17 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ITI"]
+margin_left = 1727.13
+margin_top = -644.981
+margin_right = 3184.13
+margin_bottom = -475.981
+custom_fonts/normal_font = SubResource( 18 )
+text = "Clique na cruz para avançar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IntroMessage" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 1714.56
+margin_top = -644.45
+margin_right = 3221.56
+margin_bottom = -444.45
+custom_fonts/normal_font = SubResource( 19 )
+text = "Clique na cruz para começar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Fractals/Fractal1" to="." method="_on_Fractal1_pressed"]
+[connection signal="mouse_entered" from="Fractals/Fractal2" to="." method="_on_Fractal2_mouse_entered"]
+[connection signal="mouse_exited" from="Fractals/Fractal2" to="." method="_on_Fractal2_mouse_exited"]
+[connection signal="pressed" from="Fractals/Fractal2" to="." method="_on_Fractal2_pressed"]
+[connection signal="mouse_entered" from="Fractals/Fractal3" to="." method="_on_Fractal3_mouse_entered"]
+[connection signal="mouse_exited" from="Fractals/Fractal3" to="." method="_on_Fractal3_mouse_exited"]
+[connection signal="pressed" from="Fractals/Fractal3" to="." method="_on_Fractal3_pressed"]
+[connection signal="mouse_entered" from="Fractals/Fractal4" to="." method="_on_Fractal4_mouse_entered"]
+[connection signal="mouse_exited" from="Fractals/Fractal4" to="." method="_on_Fractal4_mouse_exited"]
+[connection signal="pressed" from="Fractals/Fractal4" to="." method="_on_Fractal4_pressed"]
+[connection signal="mouse_entered" from="Fractals/Fractal5" to="." method="_on_Fractal5_mouse_entered"]
+[connection signal="mouse_exited" from="Fractals/Fractal5" to="." method="_on_Fractal5_mouse_exited"]
+[connection signal="pressed" from="Fractals/Fractal5" to="." method="_on_Fractal5_pressed"]
+[connection signal="mouse_entered" from="Fractals/Fractal6" to="." method="_on_Fractal6_mouse_entered"]
+[connection signal="mouse_exited" from="Fractals/Fractal6" to="." method="_on_Fractal6_mouse_exited"]
+[connection signal="pressed" from="Fractals/Fractal6" to="." method="_on_Fractal6_pressed"]
+[connection signal="pressed" from="ConfirmationQuestion/Yes" to="." method="_on_Yes_pressed"]
+[connection signal="pressed" from="ConfirmationQuestion/No" to="." method="_on_No_pressed"]
+[connection signal="pressed" from="ITI/fixationButton" to="." method="_on_fixationButton_pressed"]
