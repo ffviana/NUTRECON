@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Fractals/2.jpg" type="Texture" id=1]
 [ext_resource path="res://Fractals/4.jpg" type="Texture" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Fonts/TREBUC.TTF" type="DynamicFontData" id=14]
 [ext_resource path="res://Fonts/TREBUCBD.TTF" type="DynamicFontData" id=15]
 [ext_resource path="res://Fractals/4_bw.jpg" type="Texture" id=16]
+[ext_resource path="res://cursor_theme.tres" type="Theme" id=17]
+[ext_resource path="res://scripts/LineEdit.gd" type="Script" id=18]
 
 [sub_resource type="Gradient" id=7]
 offsets = PoolRealArray( 0.743169 )
@@ -31,8 +33,6 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
-
-[sub_resource type="ButtonGroup" id=10]
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
@@ -111,6 +111,17 @@ font_data = ExtResource( 14 )
 size = 115
 font_data = ExtResource( 14 )
 
+[sub_resource type="Gradient" id=23]
+offsets = PoolRealArray( 0.329949 )
+colors = PoolColorArray( 0.375, 0.361816, 0.361816, 1 )
+
+[sub_resource type="GradientTexture" id=24]
+gradient = SubResource( 23 )
+
+[sub_resource type="DynamicFont" id=25]
+size = 115
+font_data = ExtResource( 15 )
+
 [node name="FractalChoiceScreen" type="Node2D"]
 position = Vector2( 121, 141 )
 scale = Vector2( 0.15921, 0.159781 )
@@ -164,7 +175,6 @@ mouse_default_cursor_shape = 2
 size_flags_stretch_ratio = 0.0
 toggle_mode = true
 action_mode = 0
-group = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -184,7 +194,6 @@ mouse_default_cursor_shape = 2
 size_flags_stretch_ratio = 0.0
 toggle_mode = true
 action_mode = 0
-group = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -204,7 +213,6 @@ mouse_default_cursor_shape = 2
 size_flags_stretch_ratio = 0.0
 toggle_mode = true
 action_mode = 0
-group = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -225,7 +233,6 @@ mouse_default_cursor_shape = 2
 size_flags_stretch_ratio = 0.0
 toggle_mode = true
 action_mode = 0
-group = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -306,7 +313,6 @@ __meta__ = {
 }
 
 [node name="ITI" type="Node2D" parent="."]
-visible = false
 
 [node name="Background" type="Sprite" parent="ITI"]
 position = Vector2( 2455.88, 995.112 )
@@ -351,22 +357,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Fractals/Fractal1" to="." method="_on_Fractal1_pressed"]
-[connection signal="mouse_entered" from="Fractals/Fractal2" to="." method="_on_Fractal2_mouse_entered"]
-[connection signal="mouse_exited" from="Fractals/Fractal2" to="." method="_on_Fractal2_mouse_exited"]
+[node name="SubjectID" type="Node2D" parent="."]
+position = Vector2( 0, 269.118 )
+
+[node name="ID_box" type="Sprite" parent="SubjectID"]
+light_mask = 0
+position = Vector2( 2455.88, 751.028 )
+scale = Vector2( 0.785127, 300.411 )
+texture = SubResource( 24 )
+
+[node name="TEXT3" type="RichTextLabel" parent="SubjectID"]
+margin_left = 1747.19
+margin_top = 683.328
+margin_right = 2694.19
+margin_bottom = 826.328
+custom_fonts/normal_font = SubResource( 25 )
+text = "Enter Subject ID:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="SubjectID"]
+margin_left = 2707.0
+margin_top = 651.0
+margin_right = 3159.0
+margin_bottom = 851.0
+theme = ExtResource( 17 )
+align = 1
+caret_blink = true
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Fractals/Fractal1" to="." method="_on_Fractal1_pressed" binds= [ "" ]]
 [connection signal="pressed" from="Fractals/Fractal2" to="." method="_on_Fractal2_pressed"]
-[connection signal="mouse_entered" from="Fractals/Fractal3" to="." method="_on_Fractal3_mouse_entered"]
-[connection signal="mouse_exited" from="Fractals/Fractal3" to="." method="_on_Fractal3_mouse_exited"]
 [connection signal="pressed" from="Fractals/Fractal3" to="." method="_on_Fractal3_pressed"]
-[connection signal="mouse_entered" from="Fractals/Fractal4" to="." method="_on_Fractal4_mouse_entered"]
-[connection signal="mouse_exited" from="Fractals/Fractal4" to="." method="_on_Fractal4_mouse_exited"]
 [connection signal="pressed" from="Fractals/Fractal4" to="." method="_on_Fractal4_pressed"]
-[connection signal="mouse_entered" from="Fractals/Fractal5" to="." method="_on_Fractal5_mouse_entered"]
-[connection signal="mouse_exited" from="Fractals/Fractal5" to="." method="_on_Fractal5_mouse_exited"]
 [connection signal="pressed" from="Fractals/Fractal5" to="." method="_on_Fractal5_pressed"]
-[connection signal="mouse_entered" from="Fractals/Fractal6" to="." method="_on_Fractal6_mouse_entered"]
-[connection signal="mouse_exited" from="Fractals/Fractal6" to="." method="_on_Fractal6_mouse_exited"]
 [connection signal="pressed" from="Fractals/Fractal6" to="." method="_on_Fractal6_pressed"]
 [connection signal="pressed" from="ConfirmationQuestion/Yes" to="." method="_on_Yes_pressed"]
 [connection signal="pressed" from="ConfirmationQuestion/No" to="." method="_on_No_pressed"]
 [connection signal="pressed" from="ITI/fixationButton" to="." method="_on_fixationButton_pressed"]
+[connection signal="text_changed" from="SubjectID/LineEdit" to="SubjectID/LineEdit" method="_on_LineEdit_text_changed"]
+[connection signal="text_entered" from="SubjectID/LineEdit" to="." method="_on_LineEdit_text_entered"]
