@@ -1,2 +1,2 @@
 # NUTRECON
-Script for NUTRECON project
+Scripts for NUTRECON project
