@@ -22,17 +22,6 @@ var minute = dateTime.minute;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	answers = {'User': [],
-				'Trial': [], 
-				'Choice Timestamp': [], 
-				'Confirmation Timestamp': [],
-				'Fractal ID': []}
-	wrongAnswers = {'User': [],
-				'Trial': [], 
-				'Wrong Choice Timestamp': [], 
-				'Denial Timestamp': [],
-				'Fractal ID': []}
-				
 	$IntroMessage.visible = false
 	$ITI.visible = false
 	$StartMenu.visible = false
@@ -49,10 +38,36 @@ func _process(delta):
 		save(answers, sub_dataPath)
 		save(wrongAnswers, sub_dataPath_incorrectChoices)
 		get_tree().quit()
+	elif Input.is_action_pressed("ui_home"): 
+		save(answers, sub_dataPath)
+		save(wrongAnswers, sub_dataPath_incorrectChoices)
+		start_json()
+		$StartMenu.visible = true
+
+func start_json():
+	# Variables to creat file ID
+	dateTime = OS.get_datetime()
+	year = dateTime.year;
+	month = dateTime.month;
+	day = dateTime.day;
+	hour = dateTime.hour;
+	minute = dateTime.minute;
+	sub_dataPath = "user://%s_%02d-%02d-%s_%02d-%02d.json" % [sub_id, day, month, year, hour, minute]
+	sub_dataPath_incorrectChoices = "user://%s_%02d-%02d-%s_%02d-%02d_misClicks.json" % [sub_id, day, month, year, hour, minute]
+	answers = {'User': [],
+				'Trial': [], 
+				'Choice Timestamp': [], 
+				'Confirmation Timestamp': [],
+				'Fractal ID': []}
+	wrongAnswers = {'User': [],
+				'Trial': [], 
+				'Wrong Choice Timestamp': [], 
+				'Denial Timestamp': [],
+				'Fractal ID': []}
 
 func save(content, sub_id):
 	var file = File.new()
-	file.open( str(sub_id), File.WRITE) # Change NAME to somessing usefol
+	file.open( str(sub_id), File.WRITE) # Change NAME to somessing useful
 	file.store_line(to_json(content))
 	file.close()
 
@@ -60,7 +75,7 @@ func save(content, sub_id):
 func _Fractal_pressed(which):
 	ans = which.get_index() 				# Holds answer for confirmation
 	ChoiceTimestamp = OS.get_unix_time()	# Hods click timestamp
-	
+	which.get_child(0).set_frame(2)
 	for i in $Fractals.get_children():	# Goes through Fractal Buttons
 		if i != which:	
 			i.get_child(0).set_frame(1) # Changes non-clicked Fractals to Grey View
@@ -127,8 +142,9 @@ func _on_fixationButton_pressed():
 
 func _on_LineEdit_text_entered(new_text):
 	sub_id = "ercffa_%03d" % int(new_text)
-	sub_dataPath = "user://%s_%02d-%02d-%s_%02d-%02d.json" % [sub_id, day, month, year, hour, minute]
-	sub_dataPath_incorrectChoices = "user://%s_%02d-%02d-%s_%02d-%02d_misClicks.json" % [sub_id, day, month, year, hour, minute]
+	start_json()
+	#sub_dataPath = "user://%s_%02d-%02d-%s_%02d-%02d.json" % [sub_id, day, month, year, hour, minute]
+	#sub_dataPath_incorrectChoices = "user://%s_%02d-%02d-%s_%02d-%02d_misClicks.json" % [sub_id, day, month, year, hour, minute]
 	$StartMenu.visible = true
 	$SubjectID.visible = false
 
@@ -146,4 +162,3 @@ func _on_Game_pressed():
 	Trial = 0
 	$StartMenu.visible = false
 	startITI()
-	

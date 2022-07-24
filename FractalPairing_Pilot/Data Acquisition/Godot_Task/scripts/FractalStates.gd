@@ -12,8 +12,12 @@ extends AnimatedSprite
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.visible = true
-	self.scale.x = 1.025
-	self.scale.y = 1.025
+	# Fractals scales
+	# self.scale.x = 1.025
+	# self.scale.y = 1.025
+	# Shapes scale
+	self.scale.x = 1.615
+	self.scale.y = 1.615
 	self.position.y = 0
 	self.position.x = 0
 
